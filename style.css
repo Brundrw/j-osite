@@ -8,25 +8,24 @@ body {
 
 /* Estilo da Grade de Álbuns no Index */
 .album-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px; /* Reduzido para um espaçamento menor */
-    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 15px;
 }
 
 .album-card {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 270px; /* Reduzido de 300px para 250px */
-    height: 160px; /* Reduzido de 300px para 250px */
+    width: 100%;
+    aspect-ratio: 3/2;
     text-align: center;
     text-decoration: none;
     font-family: 'Playfair Display', serif;
-    font-size: 1.6em; /* Reduzido de 1.8em para 1.6em */
+    font-size: clamp(1.2em, 4vw, 1.4em);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -35,21 +34,21 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Restaurar as cores sólidas */
+/* Cores sólidas */
 .album-card.super {
-    background-color: #ffcc00; /* Amarelo para Super */
+    background-color: #ffcc00;
 }
 
 .album-card.pirata {
-    background-color: #1e90ff; /* Azul para Pirata */
+    background-color: #1e90ff;
 }
 
 .album-card.anti-heroi {
-    background-color: #d3d3d3; /* Cinza claro para Anti-Herói */
+    background-color: #d3d3d3;
 }
 
 .album-card.lobos {
-    background-color: #2f4f4f; /* Verde escuro para Lobos */
+    background-color: #2f4f4f;
 }
 
 /* Estilo dos Ícones no Menu */
@@ -62,11 +61,11 @@ body {
 
 .tool-icon:hover {
     color: #ffcc00;
-    transform: scale(1.2); /* Efeito de aumento ao passar o mouse */
+    transform: scale(1.2);
 }
 
 .tool-icon.heart:hover {
-    animation: pulse 0.5s infinite; /* Animação de pulsar para o coração */
+    animation: pulse 0.5s infinite;
 }
 
 @keyframes pulse {
@@ -75,30 +74,30 @@ body {
     100% { transform: scale(1.2); }
 }
 
-/* Estilo da Seção Sobre o Cantor (Refazer a biografia) */
+/* Estilo da Seção Sobre o Cantor */
 .about-artist {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 30px;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .about-artist h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
+    font-size: clamp(1.8em, 5vw, 2.2em);
     color: #ffcc00;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .about-artist p {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: clamp(0.9em, 3vw, 1em);
     line-height: 1.6;
     color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     text-align: justify;
 }
 
@@ -109,17 +108,17 @@ body {
 .artist-photos {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 15px;
+    margin-top: 15px;
     flex-wrap: wrap;
 }
 
 .artist-photos img {
     width: 100%;
-    max-width: 300px;
-    height: 200px;
+    max-width: 250px;
+    height: auto;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
@@ -127,30 +126,43 @@ body {
     transform: scale(1.05);
 }
 
-header {
-    text-align: center;
-    padding: 20px;
-}
-
-/* Substituir o estilo anterior do menu */
+/* Menu */
 .menu.modern-menu {
-    padding: 15px 20px;
+    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
 }
 
-/* Estilo dos links */
+.menu.modern-menu a {
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 10px;
+    font-weight: 600;
+    font-family: 'Arial', sans-serif;
+    font-size: clamp(0.9em, 3vw, 1em);
+    padding: 6px 10px;
+    transition: color 0.3s ease, border 0.3s ease;
+}
+
+.menu.modern-menu a:hover {
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+}
+
+/* Audio Player */
 .audio-player {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
-    padding: 10px;
-    z-index: 1000; /* Garante que fique acima de outros elementos */
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 8px;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -158,25 +170,25 @@ header {
 
 .audio-player audio {
     width: 100%;
-    max-width: 600px; /* Limita a largura do player */
+    max-width: 500px;
 }
 
-/* Ajuste no header para evitar sobreposição */
+/* Header */
 header {
-    padding-top: 60px; /* Espaço para o player fixo */
+    text-align: center;
+    padding: 50px 15px 20px;
 }
 
-
-
+/* Botões */
 .listen-btn {
-    margin-left: 10px;
+    margin-left: 8px;
     padding: 5px 10px;
     background-color: #ffcc00;
     border: none;
     border-radius: 5px;
     color: #000;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: clamp(0.8em, 2.5vw, 0.9em);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -190,42 +202,20 @@ header {
     cursor: not-allowed;
 }
 
-.menu.modern-menu a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: 600;
-    font-family: 'Arial', sans-serif;
-    position: relative;
-    padding: 8px 12px; /* Espaço interno para o quadrado */
-    transition: color 0.3s ease, border 0.3s ease; /* Transição suave */
-}
-
-/* Efeito de quadrado com borda no hover */
-.menu.modern-menu a:hover {
-    color: #ffcc00; /* Amarelo vibrante */
-    border: 2px solid #ffcc00; /* Borda quadrada */
-    border-radius: 5px; /* Bordas ligeiramente arredondadas */
-}
-
-/* Remover o sublinhado anterior */
-.menu.modern-menu a::after {
-    display: none; /* Desativei o sublinhado animado para focar no quadrado */
-}
-
-/* Estilo das ferramentas */
+/* Ferramentas do Menu */
 .menu-tools {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .search-bar {
-    padding: 8px 12px;
-    border-radius: 20px;
+    padding: 6px 10px;
+    border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
+    font-size: clamp(0.8em, 2.5vw, 0.9em);
     transition: all 0.3s ease;
 }
 
@@ -235,10 +225,9 @@ header {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Estilo dos ícones */
 .tool-icon {
-    font-size: 22px;
-    padding: 8px;
+    font-size: 1.1em;
+    padding: 6px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: all 0.3s ease;
@@ -249,121 +238,49 @@ header {
     color: #000;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .menu.modern-menu {
-        flex-direction: column;
-        padding: 10px;
-    }
-    .menu.modern-menu a {
-        margin: 10px 0;
-    }
-    .menu-tools {
-        margin-top: 10px;
-    }
-}
-
-.search-bar {
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 10px;
-}
-
-.icon {
-    font-size: 20px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-
 /* Página Inicial */
 .home {
     background: #1a1a1a;
 }
 
 .banner {
-    margin: 30px 0;
+    margin: 20px 0;
 }
 
 .banner img {
-    margin-left: 40px;
+    margin: 0 auto;
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 8px;
+    display: block;
 }
-
-.album-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
-
-.listen-btn {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 5px;
-    color: #000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.listen-btn:hover {
-    background-color: #e6b800;
-}
-
-.listen-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.album-card {
-    text-align: center;
-    padding: 20px;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease;
-}
-
-.album-card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.super { background: linear-gradient(135deg,#96775e, #050a25); }
-.pirata { background: linear-gradient(135deg, #1e90ff, #4682b4); }
-.anti-heroi { background: linear-gradient(135deg,#2d2f31, #5c5b68); }
-.lobos { background: linear-gradient(135deg, #2f4f39,#57493f); }
 
 /* Páginas dos Álbuns */
 .super-page { background: linear-gradient(135deg, #96775e, #050a25); }
 .pirata-page { background: linear-gradient(135deg, #1e90ff, #4682b4); }
 .anti-heroi-page { background: linear-gradient(135deg, #2d2f31, #5c5b68); }
-.lobos-page { background: linear-gradient(135deg,  #2f4f39,#57493f); }
+.lobos-page { background: linear-gradient(135deg, #2f4f39, #57493f); }
 
 /* Capa do Álbum */
 .album-cover {
     text-align: center;
-    margin: 20px 0;
+    margin: 15px 0;
 }
 
 .album-cover img {
-    max-width: 300px;
+    max-width: 100%;
+    width: clamp(200px, 50vw, 250px);
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     animation: fadeIn 1s ease-in;
 }
 
 /* Conteúdo do Álbum */
 .album-content {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 90%;
+    margin: 15px auto;
+    padding: 15px;
 }
 
 .track-list ul {
@@ -374,8 +291,8 @@ header {
 .track {
     display: flex;
     align-items: center;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 8px;
+    margin: 8px 0;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     transition: background 0.3s;
@@ -386,7 +303,7 @@ header {
 }
 
 .play-btn {
-    margin-right: 10px;
+    margin-right: 8px;
     cursor: pointer;
 }
 
@@ -395,58 +312,23 @@ header {
 }
 
 .track-details p {
-    margin: 5px 0;
-}
-
-.transition {
-    margin-top: 40px;
-    border-top: 2px solid #fff;
-    padding-top: 20px;
-}
-
-.video-player {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.video-player iframe {
-    display: none; /* Inicia oculto */
-}
-
-/* Sobre o Cantor */
-.about-artist {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.artist-photos {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.artist-photos img {
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
+    margin: 4px 0;
+    font-size: clamp(0.8em, 2.5vw, 0.9em);
 }
 
 /* Notícias e Turnês */
 .news {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    max-width: 90%;
+    margin: 15px auto;
+    padding: 15px;
     text-align: center;
 }
 
 .news-card {
     background: #333;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
 }
 
 /* Animações */
@@ -455,3 +337,82 @@ header {
     to { opacity: 1; }
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+    .menu.modern-menu {
+        flex-direction: column;
+        padding: 8px;
+    }
+
+    .menu.modern-menu a {
+        margin: 8px 0;
+    }
+
+    .menu-tools {
+        margin-top: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .album-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .album-card {
+        font-size: clamp(1em, 3.5vw, 1.2em);
+    }
+
+    .about-artist {
+        padding: 15px;
+    }
+
+    .artist-photos img {
+        max-width: 200px;
+    }
+
+    .audio-player audio {
+        max-width: 90%;
+    }
+
+    .listen-btn {
+        padding: 4px 8px;
+        font-size: clamp(0.7em, 2vw, 0.8em);
+    }
+
+    .album-cover img {
+        width: clamp(150px, 45vw, 200px);
+    }
+}
+
+@media (max-width: 480px) {
+    .album-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .album-card {
+        font-size: clamp(0.9em, 3vw, 1em);
+    }
+
+    .about-artist h2 {
+        font-size: clamp(1.5em, 4vw, 1.8em);
+    }
+
+    .artist-photos img {
+        max-width: 150px;
+    }
+
+    .track-details p {
+        font-size: clamp(0.7em, 2vw, 0.8em);
+    }
+
+    .search-bar {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .tool-icon {
+        font-size: 1em;
+    }
+}
