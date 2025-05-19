@@ -1,9 +1,116 @@
-/* Estilo Geral */
+/* Add to the top of style.css */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Update body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #fff;
+    min-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Ensure images don’t overflow */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Update album-grid for better mobile fit */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Center banner images */
+.banner {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.banner img {
+    max-width: 100%;
+    width: clamp(200px, 90%, 800px); /* Limits width, keeps centered */
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+/* Center artist photos */
+.artist-photos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 15px auto;
+    flex-wrap: wrap;
+    max-width: 90%;
+}
+
+.artist-photos img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Center album cover */
+.album-cover {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.album-cover img {
+    max-width: 100%;
+    width: clamp(200px, 50%, 250px);
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Update album-card to avoid stretching */
+.album-card {
+    width: 100%;
+    aspect-ratio: 3/2;
+    font-size: clamp(1em, 3.5vw, 1.2em);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Update media queries */
+@media (max-width: 480px) {
+    .album-grid {
+        grid-template-columns: 1fr;
+    }
+    .album-card {
+        font-size: clamp(0.9em, 3vw, 1em);
+    }
+    .banner img {
+        width: 100%;
+        margin: 0;
+    }
+    .audio-player audio {
+        width: 95%;
+    }
 }
 
 /* Estilo da Grade de Álbuns no Index */
